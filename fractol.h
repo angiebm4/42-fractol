@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:46:28 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/05 17:05:33 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/06 18:14:52 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@
 # include "mlx/mlx.h"
 # include "color.h"
 
-# define WIDTH 1000
-# define HEIGTH 1000
-# define ITERATIONS 50  // quality and time render
+# define WIDTH 500
+# define HEIGTH 500
+//# define ITERATIONS 200  // quality and time render
+
+# define LEFT_CLICK		1
+# define RIGHT_CLICK	2
+# define MIDDLE_CLICK	3
+# define SCROLL_UP		4
+# define SCROLL_DOWN	5
 
 typedef struct	s_fractal
 {
@@ -38,6 +44,13 @@ typedef struct	s_data
 	void		*mlx;
 	void		*win1;
 	void		*win2;
+	int			color;
+	int			saturation;
+	double		in;
+	double		out;
+	int			iter;
+	double		move_x;
+	double		move_y;
 	//image
 	t_fractal	*fractal1;
 	//
@@ -51,7 +64,7 @@ typedef struct	s_complex
 
 void			create_image(t_data *data);
 void			create_window(t_data *data);
-void			handel_pixel(int x, int y, t_data *fractal);
+void			paint_pixel(int x, int y, t_data *data);
 int				end_program(t_data *data);
 void			fractal_render(t_data	*data);
 
@@ -60,6 +73,6 @@ double			scale(double uns_num, double new_min, double new_max);
 
 // hooks
 int				key_hooks(int keycode, t_data *data);
-int				mouse_hook(int keycode, t_data *data);
+int	mouse_hook(int keycode, int x, int y, t_data *data);
 
 #endif

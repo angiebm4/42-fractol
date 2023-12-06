@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:55:37 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/05 13:31:38 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/06 18:03:48 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,5 @@
 #define BG_GOLD     	0xD4AF37
 
 #define CLEAR       	"\033[0m"
-
-
-#define CLEAR "\033[0m"
 
 #endif

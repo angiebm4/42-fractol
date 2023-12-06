@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 09:56:25 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/06 12:02:08 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/06 18:19:24 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,35 @@ static void	my_pixel_put(t_fractal *img, int x, int y, int color)
 	offset = (img->line_len * y) + (x * (img->bpp / 8));
 	*((unsigned int *)(offset + img->pix_addr)) = color; 
 }
-
-void	handel_pixel(int x, int y, t_data *data)
+void	paint_pixel(int x, int y, t_data *data)
 {
 	t_complex	z;
 	t_complex	c;
 	int i = 0;
 	double	tmp_real;
+	int	color;
 	
-	(void)data;
+	color = data->color;
 	z.real = 0.0;
 	z.imgy = 0.0;
-	c.real = scale(x, -2, 2);
-	c.imgy	= scale(y, 2, -2);
-	while (i < ITERATIONS)
+	c.real = scale(x, data->out, data->in) + data->move_x;
+	c.imgy	= scale(y, data->in, data->out) + data->move_y;
+	while ((z.real * z.real) + (z.imgy * z.imgy) <= 2*2 && i < data->iter)
 	{
-		double h = (z.real * z.real) + (z.imgy * z.imgy);
-		h = h * h;
-		if (h > 2.0)
-		{
-			my_pixel_put(data->fractal1, x, y, GREEN);
-			return ;
-		}
 		tmp_real = (z.real * z.real) - (z.imgy * z.imgy);
 		z.imgy = 2 * z.real * z.imgy;
 		z.real = tmp_real;
 		z.real += c.real;
 		z.imgy += c.imgy;
-		// printf("iteration n -> %d real %f imaginary %f\n", i, z.real, z.imgy);
+		data->color += data->saturation;
 		i++;
 	}
-	my_pixel_put(data->fractal1, x, y, BLACK);
+	if (i == data->iter)
+		data->color = BLACK;
+	my_pixel_put(data->fractal1, x, y, data->color);
+	data->color = color;
 }
+
 
 void	fractal_render(t_data	*data)
 {
@@ -63,7 +60,7 @@ void	fractal_render(t_data	*data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			handel_pixel(x, y, data);
+			paint_pixel(x, y, data);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:46:25 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/05 17:06:38 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/06 18:20:13 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,46 @@ int	valid_comands(void)
 	
 	return(EXIT_FAILURE);
 }
+void	hooking(t_data *data)
+{
+	printf("UBI: %p\n\n", data);
+	mlx_mouse_hook(data->win1, mouse_hook, data);
+	mlx_mouse_hook(data->win2, mouse_hook, data);
+	mlx_key_hook(data->win1, key_hooks, data);
+	mlx_key_hook(data->win2, key_hooks, data);
+	mlx_hook(data->win1, 17, 0, end_program, data);
+	mlx_hook(data->win2, 17, 0, end_program, data);
+	mlx_loop(data->mlx);
+}
+
+void	init_stack(t_data *data)
+{
+	ft_bzero(data, sizeof(t_data));
+	data->color = WHITE;
+	data->saturation = 0;
+	data->in = 2.0;
+	data->out = -2.0;
+	data->iter = 500;
+	data->move_x = 0.0;
+	data->move_y = 0.0;
+}
 
 int	main(int argc, char *str[])
 {
-	t_data	data;
+	t_data	*data;
 	
+	data = malloc (sizeof (t_data));
+	if (!data)
+		return (EXIT_FAILURE);
 	atexit(leaks);
 	if ((argc == 2 && !ft_strncmp("mandelbrot", str[1], 10))
 		|| (argc == 4 && !ft_strncmp("julia", str[1], 5)))
 	{
-		create_window(&data);
-		create_image(&data);
-		fractal_render(&data);
-		mlx_key_hook(data.win1, key_hooks, &data);
-		mlx_key_hook(data.win2, key_hooks, &data);
-		mlx_hook(data.win1, 17, 0, end_program, &data);
-		mlx_hook(data.win2, 17, 0, end_program, &data);
-		mlx_mouse_hook(data.win1, mouse_hook, &data);
-		mlx_mouse_hook(data.win2, mouse_hook, &data);
-		mlx_loop(data.mlx);
+		init_stack(data);
+		create_window(data);
+		create_image(data);
+		fractal_render(data);
+		hooking(data);
 	}
 	else
 		return (valid_comands()); 
