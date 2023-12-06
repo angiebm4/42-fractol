@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:46:28 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/04 15:17:16 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:05:33 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,49 @@
 # include "libft/ft_printf.h"
 # include "libft/libft.h"
 # include "mlx/mlx.h"
+# include "color.h"
 
 # define WIDTH 1000
 # define HEIGTH 1000
+# define ITERATIONS 50  // quality and time render
+
+typedef struct	s_fractal
+{
+	void	*img;
+	char	*pix_addr;
+	int		bpp; //bytes per pixel
+	int		line_len;
+	int		endian;
+}				t_fractal;
 
 typedef struct	s_data 
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	char		*name;
+	void		*mlx;
+	void		*win1;
+	void		*win2;
+	//image
+	t_fractal	*fractal1;
+	//
 }				t_data;
 
-typedef struct	s_mlx
+typedef struct	s_complex
 {
-	void	*mlx;
-	void	*win1;
-	// void	*win2;
-	int		color;
-}				t_mlx;
+	double	real;
+	double	imgy;
+}				t_complex;
 
-// typedef struct	s_color
-// {
-// 	unsigned char	red;
-// 	unsigned char	green;
-// 	unsigned char	blue;
-// }				t_color;
+void			create_image(t_data *data);
+void			create_window(t_data *data);
+void			handel_pixel(int x, int y, t_data *fractal);
+int				end_program(t_data *data);
+void			fractal_render(t_data	*data);
 
-void	create_window(void);
+// math utils
+double			scale(double uns_num, double new_min, double new_max);
+
+// hooks
+int				key_hooks(int keycode, t_data *data);
+int				mouse_hook(int keycode, t_data *data);
 
 #endif

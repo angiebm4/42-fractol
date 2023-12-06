@@ -17,7 +17,10 @@ LIB= libft/libft.a
 MLX= mlx/libmlx.a
 
 FUNCTION=	main.c \
-			window.c
+			window.c \
+			render.c \
+			math_utils.c \
+			hooks.c
 
 OBJ=$(FUNCTION:%.c=%.o)
 
