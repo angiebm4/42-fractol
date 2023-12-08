@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:01:57 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/08 12:16:45 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/08 12:35:50 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	init_stack(t_data *data, char *str)
 	ft_bzero(data, sizeof(t_data));
 	data->name = str;
 	data->color = WHITE;
-	data->saturation = 5000;
+	data->saturation = 0;
 	data->in = 2.0;
 	data->out = -2.0;
 	data->iter = 1000;
