@@ -20,7 +20,9 @@ FUNCTION=	main.c \
 			window.c \
 			render.c \
 			math_utils.c \
-			hooks.c
+			key_hooks.c \
+			mause_hooks.c \
+			fractol_utils.c \
 
 OBJ=$(FUNCTION:%.c=%.o)
 

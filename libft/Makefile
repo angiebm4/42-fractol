@@ -6,7 +6,7 @@
 #    By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/12 11:55:51 by abarrio-          #+#    #+#              #
-#    Updated: 2023/11/08 16:37:38 by abarrio-         ###   ########.fr        #
+#    Updated: 2023/12/07 15:00:37 by abarrio-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ FUNCTIONS=	ft_isalpha.c \
 			ft_type_un_nbr2.c \
 			ft_type_hex2.c \
 			ft_type_nbr3.c \
-			ft_type_hex3.c
+			ft_type_hex3.c \
+			ft_atof.c
 
 OBJ= $(FUNCTIONS:%.c=%.o)
 
