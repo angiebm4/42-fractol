@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:45:37 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/08 12:35:11 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:04:55 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	zoom_out(t_data *data, int x, int y)
 	if (data->iter <= 50)
 		data->iter = 50;
 	else
-		data->iter -= 50;
+		data->iter -= 2;
 	
 	data->in *= 1.1;
 	data->out *= 1.1;
@@ -28,11 +28,11 @@ static void	zoom_out(t_data *data, int x, int y)
 
 static void	zoom_in(t_data *data, int x, int y)
 {
-	data->iter += 100;
-	data->in *= 0.9;
-	data->out *= 0.9;
+	data->iter += 2;
 	x += x;
 	y += y;
+	data->in *= 0.9;
+	data->out *= 0.9;
 	fractal_render(data);
 }
 
@@ -47,3 +47,5 @@ int	mouse_hook(int keycode, int x, int y, t_data *data)
 		zoom_in(data, x, y);
 	return (0);
 }
+
+// void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*f)(), void *param)

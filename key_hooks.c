@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:20:15 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/07 10:48:28 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:21:15 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ static void	color_options(t_data *data, int keycode)
 {
 	if (keycode == 18)
 	{
-		data->saturation += 10;
+		data->saturation += 50;
 		fractal_render(data);
 	}
 	else if (keycode == 19)
 	{
-		data->saturation -= 10;
+		data->saturation -= 50;
 		fractal_render(data);
 	}
 	else if (keycode == 20)
@@ -72,5 +72,10 @@ int	key_hooks(int keycode, t_data *data)
 		end_program(data);
 	color_options(data, keycode);
 	move(data, keycode);
+	if (keycode == 22)
+	{
+		data->uwu_mode = !data->uwu_mode;
+		fractal_render(data);
+	}
 	return (0);
 }

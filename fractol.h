@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 15:46:28 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/07 16:25:22 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/08 14:04:51 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,12 @@ typedef struct	s_data
 	int 		iter;           // quality and time render
 	double 		move_x;       	// move options
 	double 		move_y;       	// move options
+	int			uwu_mode;		// color option flag
 	t_fractal 	*fractal1;		// image
 	t_complex 	c;         		// complex nb
 	t_complex 	z;         		// complex nb
 }				t_data;
 
-void		create_image(t_data *data);
-void		create_window(t_data *data);
 
 // math utils
 double		scale(double uns_num, double new_min, double new_max);
@@ -69,9 +68,6 @@ int			end_program(t_data *data);
 
 // render
 void		fractal_render(t_data *data);
-void		paint_pixel(int x, int y, t_data *data);
-void		my_pixel_put(t_fractal *img, int x, int y, int color);
-void		julia_render(t_data *data, double real, double imaginary);
 
 // hooks
 int			key_hooks(int keycode, t_data *data);

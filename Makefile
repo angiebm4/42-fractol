@@ -17,7 +17,6 @@ LIB= libft/libft.a
 MLX= mlx/libmlx.a
 
 FUNCTION=	main.c \
-			window.c \
 			render.c \
 			math_utils.c \
 			key_hooks.c \
