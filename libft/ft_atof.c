@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:44:14 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/07 15:15:43 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:14:33 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static double	ft_atof2(char *str, double nb)
 {
-	double		dec;
-	double		aux;
+	double	dec;
+	double	aux;
 
 	dec = 10;
 	while (*str >= '0' && *str <= '9')
@@ -41,7 +41,7 @@ static double	ft_atof2(char *str, double nb)
 double	ft_atof(char *str)
 {
 	double	nb;
-	int	sing;
+	int		sing;
 
 	nb = 0;
 	sing = 0;

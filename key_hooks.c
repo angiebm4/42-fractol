@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:20:15 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/08 15:21:15 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:03:27 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,38 @@
 
 static void	move(t_data *data, int keycode)
 {
-	if (keycode == 13 || keycode == 126) //flecha pa arriba
+	if (keycode == 13 || keycode == 126)
 	{
-		data->move_y += 0.05;
+		data->move_y += 0.5 * data->scale_x;
 		fractal_render(data);
 	}
-	else if (keycode == 0 || keycode == 123) //flecha pa izquierda
+	else if (keycode == 0 || keycode == 123)
 	{
-		data->move_x -= 0.05;
+		data->move_x -= 0.5 * data->scale_x;
 		fractal_render(data);
 	}
-	else if (keycode == 1 || keycode == 125) //flecha pa abajo
+	else if (keycode == 1 || keycode == 125)
 	{
-		data->move_y -= 0.05;
+		data->move_y -= 0.5 * data->scale_x;
 		fractal_render(data);
 	}
-	else if (keycode == 2 || keycode == 124) //flecha pa arriba
+	else if (keycode == 2 || keycode == 124)
 	{
-		data->move_x += 0.05;
+		data->move_x += 0.5 * data->scale_x;
 		fractal_render(data);
 	}
+}
+
+int	uwu_mode(t_data *data)
+{
+	if (data->uwu_mode == 1)
+	{
+		data->color += 5000;
+		fractal_render(data);
+		return (0);
+	}
+	else
+		return (1);
 }
 
 static void	color_options(t_data *data, int keycode)
@@ -67,7 +79,6 @@ static void	color_options(t_data *data, int keycode)
 
 int	key_hooks(int keycode, t_data *data)
 {
-	printf("tecla %d\n", keycode);
 	if (keycode == 53)
 		end_program(data);
 	color_options(data, keycode);

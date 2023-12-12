@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:55:37 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/07 11:37:12 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/10 20:59:50 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define COLOR_H
 
 // RGB color (with values from[0-255])
-// for text	\x1B[38;2;R;G;Bm	
+// for text	\x1B[38;2;R;G;Bm
 // for background  \x1B[48;2;R;G;Bm
 
-// color (with V from [0-255])	
-// for text \x1B[38;5;Vm	
+// color (with V from [0-255])
+// for text \x1B[38;5;Vm
 // for background \x1B[48;5;Vm
 
 // 38 for costum color
@@ -42,7 +42,7 @@
 // #define GRAY  			"\x1B[38;2;176;174;174m"
 // #define GOLD				"\x1B[38;2;212;175;55m"
 
-// // background color 
+// // background color
 
 // #define BG_BLACK  		"\x1B[40m"
 // #define BG_RED    		"\x1B[41m"
@@ -59,42 +59,41 @@
 // #define BG_ROSE  		"\x1B[48;2;255;151;203m"
 // #define BG_GOLD			"\x1B[48;2;212;175;55m"
 
+//text color
 
-//text color 
-
-#define RED				0xFF0000
-#define GREEN       	0x00FF00
-#define GREENFOSFI  	0x11F578
-#define PURPLE      	0x800080
-#define BLACK       	0x000000
-#define YELLOW      	0xFFFF00
-#define BLUE        	0x0000FF
-#define MAGENTA     	0xFF00FF
-#define CYAN        	0x00FFFF
-#define WHITE       	0xFFFFFF
-#define ORANGE      	0xFF8000
-#define ROSE        	0xFF97CB
-#define LBLUE       	0x3595F0
-#define GRAY        	0xB0AEAE
-#define GOLD       		0xD4AF37
+# define RED 0xFF0000
+# define GREEN 0x00FF00
+# define GREENFOSFI 0x11F578
+# define PURPLE 0x800080
+# define BLACK 0x000000
+# define YELLOW 0xFFFF00
+# define BLUE 0x0000FF
+# define MAGENTA 0xFF00FF
+# define CYAN 0x00FFFF
+# define WHITE 0xFFFFFF
+# define ORANGE 0xFF8000
+# define ROSE 0xFF97CB
+# define LBLUE 0x3595F0
+# define GRAY 0xB0AEAE
+# define GOLD 0xD4AF37
 
 // Background color
 
-#define BG_BLACK    	0x000000
-#define BG_RED      	0xFF0000
-#define BG_GREEN    	0x00FF00
-#define BG_YELLOW   	0xFFFF00
-#define BG_BLUE     	0x0000FF
-#define BG_MAGENTA  	0xFF00FF
-#define BG_CYAN     	0x00FFFF
-#define BG_WHITE    	0xFFFFFF
-#define BG_ORANGE   	0xFF8000
-#define BG_LBLUE    	0x3595F0
-#define BG_GREENFOSFI	0x11F578
-#define BG_GRAY     	0xB0AEAE
-#define BG_ROSE     	0xFF97CB
-#define BG_GOLD     	0xD4AF37
+# define BG_BLACK 0x000000
+# define BG_RED 0xFF0000
+# define BG_GREEN 0x00FF00
+# define BG_YELLOW 0xFFFF00
+# define BG_BLUE 0x0000FF
+# define BG_MAGENTA 0xFF00FF
+# define BG_CYAN 0x00FFFF
+# define BG_WHITE 0xFFFFFF
+# define BG_ORANGE 0xFF8000
+# define BG_LBLUE 0x3595F0
+# define BG_GREENFOSFI 0x11F578
+# define BG_GRAY 0xB0AEAE
+# define BG_ROSE 0xFF97CB
+# define BG_GOLD 0xD4AF37
 
-#define CLEAR       	"\033[0m"
+# define CLEAR "\033[0m"
 
 #endif

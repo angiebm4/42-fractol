@@ -6,7 +6,7 @@
 /*   By: abarrio- <abarrio-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 09:56:25 by abarrio-          #+#    #+#             */
-/*   Updated: 2023/12/09 19:05:12 by abarrio-         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:29:25 by abarrio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	my_pixel_put(t_fractal *img, int x, int y, int color)
 	offset = (img->line_len * y) + (x * (img->bpp / 8));
 	*((unsigned int *)(offset + img->pix_addr)) = color;
 }
+
 static void	paint_pixel(int x, int y, t_data *data)
 {
 	int		i;
@@ -29,8 +30,8 @@ static void	paint_pixel(int x, int y, t_data *data)
 	aux_color = data->color;
 	data->z.real = 0.0;
 	data->z.imgy = 0.0;
-	data->c.real = scale(x, data->out, data->in) + data->move_x;
-	data->c.imgy = scale(y, data->in, data->out) + data->move_y;
+	data->c.real = scale(x, -data->scale_x, data->scale_y) + data->move_x;
+	data->c.imgy = scale(y, data->scale_x, -data->scale_y) + data->move_y;
 	while ((data->z.real * data->z.real) + (data->z.imgy * data->z.imgy) <= 2
 		* 2 && i < data->iter)
 	{
@@ -56,8 +57,8 @@ static void	paint_pixel_julia(int x, int y, t_data *data)
 
 	i = 0;
 	aux_color = data->color;
-	data->z.real = scale(x, data->out, data->in) + data->move_x;
-	data->z.imgy = scale(y, data->in, data->out) + data->move_y;
+	data->z.real = scale(x, -data->scale_x, data->scale_y) + data->move_x;
+	data->z.imgy = scale(y, data->scale_x, -data->scale_y) + data->move_y;
 	while ((data->z.real * data->z.real) + (data->z.imgy * data->z.imgy) <= 2
 		* 2 && i < data->iter)
 	{
@@ -75,7 +76,7 @@ static void	paint_pixel_julia(int x, int y, t_data *data)
 	data->color = aux_color;
 }
 
-void	paint_pixel_ship(int x, int y, t_data *data)
+static void	paint_pixel_ship(int x, int y, t_data *data)
 {
 	int		i;
 	double	tmp_r;
@@ -85,8 +86,8 @@ void	paint_pixel_ship(int x, int y, t_data *data)
 	aux_color = data->color;
 	data->z.real = 0.0;
 	data->z.imgy = 0.0;
-	data->c.real = scale(x, -data->out, data->in) + data->move_x;
-	data->c.imgy = scale(y, -data->in, data->in) + data->move_y;
+	data->c.real = scale(x, -data->scale_x, data->scale_y) + data->move_x;
+	data->c.imgy = scale(y, -data->scale_x, data->scale_y) + data->move_y;
 	while ((data->z.real * data->z.real) + (data->z.imgy * data->z.imgy) <= 2
 		* 2 && i < data->iter)
 	{
